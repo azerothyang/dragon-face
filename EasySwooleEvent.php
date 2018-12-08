@@ -36,8 +36,8 @@ class EasySwooleEvent implements Event
         if(Config::getInstance()->getConf("ENV") === "dev") {
             //开发环境加入热重载
             ServerManager::getInstance()->getSwooleServer()->addProcess((new HotReload('HotReload', ['disableInotify' => false]))->getProcess());
-//            ini_set("opcache.revalidate_freq", 0);
-//            ini_set("opcache.fast_shutdown", 0);
+            ini_set("opcache.revalidate_freq", 0);
+            ini_set("opcache.fast_shutdown", 0);
         }
     }
 
