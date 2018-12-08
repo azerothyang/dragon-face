@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>{{$content}}</h1>
-    @for ($i = 0; $i < 10; $i++)
+    @for ($i = 0; $i < 5; $i++)
         The current value is {{ $i }} <br>
     @endfor
     <h2>dragon</h2>
