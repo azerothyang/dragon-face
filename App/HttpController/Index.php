@@ -15,7 +15,7 @@ class Index extends ViewController
     {
         // TODO: Implement index() method.
         // Blade View
-        $this->render('index', array("content" => "hello easyswoole!"));     # 对应模板: Views/index.blade.php
+        $this->render('index', array("content" => "hello world!!"));     # 对应模板: Views/index.blade.php
     }
 
 }

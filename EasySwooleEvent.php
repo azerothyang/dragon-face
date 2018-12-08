@@ -9,6 +9,7 @@
 namespace EasySwoole\EasySwoole;
 
 
+use App\Process\HotReload;
 use App\Vendor\Db\Redis;
 use EasySwoole\Component\Di;
 use EasySwoole\EasySwoole\Swoole\EventRegister;
@@ -30,6 +31,14 @@ class EasySwooleEvent implements Event
     public static function mainServerCreate(EventRegister $register)
     {
         // TODO: Implement mainServerCreate() method.
+
+        //hot reload
+        if(Config::getInstance()->getConf("ENV") === "dev") {
+            //开发环境加入热重载
+            ServerManager::getInstance()->getSwooleServer()->addProcess((new HotReload('HotReload', ['disableInotify' => false]))->getProcess());
+//            ini_set("opcache.revalidate_freq", 0);
+//            ini_set("opcache.fast_shutdown", 0);
+        }
     }
 
     public static function onRequest(Request $request, Response $response): bool
